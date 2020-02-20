@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import * as selectors from '../list.selectors';
-import { removeArticle } from '../list.actions';
+import * as selectors from '../../listDemo/listDemo.selectors';
+import { removeArticle } from '../../listDemo/listDemo.actions';
 import List from './list';
 import React, { Component } from 'react';
 

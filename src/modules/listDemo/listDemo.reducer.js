@@ -1,9 +1,7 @@
-import * as actionTypes from './list.actionTypes';
+import * as actionTypes from './listDemo.actionTypes';
 
 const initialState = {
-    articles: [
-        { title: "Some Title", id: 3 }
-    ]
+    articles: []
 }
 
 const reducer = (state = initialState, action) => {

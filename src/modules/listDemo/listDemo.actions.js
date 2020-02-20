@@ -1,4 +1,4 @@
-import * as actionTypes from './list.actionTypes.js';
+import * as actionTypes from './listDemo.actionTypes.js';
 
 export const addArticle = (article) => {
     return {
