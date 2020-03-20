@@ -1,0 +1,1 @@
+export const dataDisplay = state => state.table.data

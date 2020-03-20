@@ -1,11 +1,21 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { addArticle } from '../../listDemo/listDemo.actions';
+import * as selectors from '../../listDemo/listDemo.selectors';
 import Form from './form';
+// import { bindActionCreators } from 'redux';
+
+// const mapStateToProps = state => ({
+//     articles: selectors.getsavedArticle(state)
+// });
 
 const mapDispatchToProps = {
-    addArticle
+    addArticle,
 }
+
+const mapStateToProps = state => ( {
+    selectedItem: selectors.setSelectedItem(state)
+})
 
 class FormContainer extends Component {
 
@@ -23,8 +33,23 @@ class FormContainer extends Component {
             id: ++this.counter
         });
         this.setState({
-            value: ''
+            value: ""
         });
+    }
+
+    // handleEditedArticle = (selectedItem) => {
+    //     this.setState({
+    //         value: this.state.selectedItem
+    //     })
+    // }
+
+    componentDWillUpdate(prevState){
+        
+        
+            this.setState({
+                value: this.state.selectedItem
+            })
+        
     }
 
     handleValueChange = event => {
@@ -34,12 +59,11 @@ class FormContainer extends Component {
     }
 
     render() {
-
         return (
-            <Form addArticle={this.handleAddArticle} value={this.state.value} valueChange={this.handleValueChange} />
+            <Form addArticle={this.handleAddArticle} value={this.state.value} valueChange={this.handleValueChange} editedArticle={this.handleEditedArticle}/>
         );
     }
 
 }
 
-export default connect(null, mapDispatchToProps)(FormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(FormContainer);
