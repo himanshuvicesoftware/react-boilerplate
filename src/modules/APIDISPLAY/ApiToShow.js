@@ -3,10 +3,10 @@ import * as selectors from '../displayDemo/displayDemo.selectors'
 import React, { Component } from 'react'
 import axios from 'axios'
 import ApiDisplay from '../APIDISPLAY/apiDisplay'
-import { apiDataItem ,userEdit} from '../displayDemo/displayDemo.actions'
+import  {apiDataItem} from '../displayDemo/displayDemo.actions'
 
 const mapDispatchToProps = {
-  apiDataItem,userEdit
+  apiDataItem
 }
 
 const mapStateToProps = state => ({
@@ -17,10 +17,12 @@ class ApiToShow extends Component {
   componentDidMount() {
     debugger
     axios.get('https://jsonplaceholder.typicode.com/users').then(res => {
-      console.log(res)
+      console.log(res.data,"console")
+      debugger
       this.props.apiDataItem(res.data)
     })
   }
+  /*
   editApi=id =>{
     const selectedUser = this.props.data.find(each => each.id === id);
 
@@ -41,12 +43,12 @@ class ApiToShow extends Component {
 
     this.props.userEdit(eData);
   }
-    
+    */
   render() {
     debugger
-  
+  console.log(this.props.data,"fdfdf")
     return (<div><ApiDisplay data={this.props.data}
-      editApi={this.editApi}
+      // editApi={this.editApi}
     />
     </div>
     );

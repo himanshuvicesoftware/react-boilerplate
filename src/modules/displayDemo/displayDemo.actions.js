@@ -7,9 +7,9 @@ export const apiDataItem = data => {
     payload: data
   }
 }
-export const userEdit = data => {
+/*export const userEdit = data => {
   return {
     type: actionTypes.EDIT_DATA,
     payload: data
   }
-}
+}*/

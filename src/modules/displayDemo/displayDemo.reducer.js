@@ -12,7 +12,7 @@ const reducer = (state = initialState, action) => {
       debugger
       return { ...state, data: action.payload }
 
-case actionTypes.EDIT_DATA:
+/*case actionTypes.EDIT_DATA:
   debugger
   const userdata = state.map(each => {
     if (each.id === action.payload.user_id) {
@@ -23,7 +23,7 @@ case actionTypes.EDIT_DATA:
     }
     return each;
   });
-  return userdata;
+  return userdata;*/
       default:
         return state
     }

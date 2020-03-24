@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ApiDisplay = ({data,editApi })=> {
-  console.log(data.data, 'rendder')
+  console.log(data, 'rendder')
   debugger
   return (
     <table border="1">
@@ -20,7 +20,7 @@ const ApiDisplay = ({data,editApi })=> {
           <td>{res.email}</td>
          
           <td>{res.address.city}</td>
-          <button onClick={() => data.editApi(res.id)}>Edit</button>
+          {/* <button onClick={() => data.editApi(res.id)}>Edit</button> */}
           {/* <td><button type="button">Edit</button></td> */}
         </tr>
       ))}
