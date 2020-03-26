@@ -3,13 +3,13 @@ export const apiDataItem = data => {
   console.log(data, 'action')
   debugger
   return {
-    type: actionTypes.API_DATA,
+    type: "API_DATA",
     payload: data
   }
 }
-/*export const userEdit = data => {
+export const userEdit = data => {
   return {
-    type: actionTypes.EDIT_DATA,
+    type: "EDIT_DATA",
     payload: data
   }
-}*/
+}

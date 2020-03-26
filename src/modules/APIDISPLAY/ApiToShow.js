@@ -3,10 +3,10 @@ import * as selectors from '../displayDemo/displayDemo.selectors'
 import React, { Component } from 'react'
 import axios from 'axios'
 import ApiDisplay from '../APIDISPLAY/apiDisplay'
-import  {apiDataItem} from '../displayDemo/displayDemo.actions'
-
+import  {apiDataItem,userEdit} from '../displayDemo/displayDemo.actions'
+import EditForm from './Editform'
 const mapDispatchToProps = {
-  apiDataItem
+  apiDataItem,userEdit
 }
 
 const mapStateToProps = state => ({
@@ -14,6 +14,19 @@ const mapStateToProps = state => ({
 })
 
 class ApiToShow extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    
+       user_name:"",
+       user_username:"",
+user_email:""
+          };
+  }
+
+
+
+
   componentDidMount() {
     debugger
     axios.get('https://jsonplaceholder.typicode.com/users').then(res => {
@@ -22,35 +35,63 @@ class ApiToShow extends Component {
       this.props.apiDataItem(res.data)
     })
   }
-  /*
   editApi=id =>{
-    const selectedUser = this.props.data.find(each => each.id === id);
-
+    const apiUser = this.props.data.find(each => each.id === id);
+    console.log(apiUser,"through_id")
+    alert("edit");
     this.setState({
-      user_id: selectedUser.id,
-      name: selectedUser.name,
-      username: selectedUser.username,
-    email: selectedUser.email,
-    address:selectedUser.address.city
+      // user_id: apiUser.id,
+      user_name: apiUser.name,
+      user_username: apiUser.username,
+    user_email: apiUser.email,
+    
     });
 
-    const user_id = selectedUser.id;
-    const user_name = selectedUser.name;
-    const user_username = selectedUser.username;
-    const user_email = selectedUser.email;
-    const user_address=selectedUser.address.city
-    const eData = { user_id, user_name,user_username, user_email,user_address };
+   const user_id = apiUser.id;
+    const user_name = apiUser.name;
+    const user_username = apiUser.username;
+    const user_email = apiUser.email;
+    const user_address=apiUser.address.city
+    const userData = { user_id, user_name,user_username, user_email,user_address };
 
-    this.props.userEdit(eData);
+    this.props.userEdit(userData);
   }
-    */
+  /*
+  changeUserName = event => {
+    this.setState({ user_name: event.target.value });
+  };
+
+  changeUserUsername = event => {
+    this.setState({ user_username: event.target.value });
+  };
+
+  changeUserEmail = event => {
+    this.setState({ user_email: event.target.value });
+  };
+*/
+  /*save = event => {
+    event.preventDefault();
+    const {
+      user_id,
+      user_name,
+      user_username,
+      user_email
+      
+    } = this.state;
+  }
+ 
+*/
   render() {
     debugger
   console.log(this.props.data,"fdfdf")
     return (<div><ApiDisplay data={this.props.data}
-      // editApi={this.editApi}
+       editApi={this.editApi}
+      
     />
+    
+    
     </div>
+    
     );
   }
 }

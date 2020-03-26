@@ -6,10 +6,10 @@ import store from "./modules/store";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Example from './modules/bootstrapform/formModal'
 // import DisplayDemo from "./modules/displayDemo/components/displayDemo";
-// import DisplayDemo from './modules/displayDemo/components/displayDemo'
+import DisplayDemo from './modules/displayDemo/components/displayDemo'
 render(
     <Provider store={store}>
-        {/* <DisplayDemo /> */}
+        <DisplayDemo />
         {/* <Formcomp/>, */}
         <Example/>
     </Provider>,

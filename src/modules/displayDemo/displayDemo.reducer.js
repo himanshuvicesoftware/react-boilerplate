@@ -12,18 +12,23 @@ const reducer = (state = initialState, action) => {
       debugger
       return { ...state, data: action.payload }
 
-/*case actionTypes.EDIT_DATA:
-  debugger
-  const userdata = state.map(each => {
-    if (each.id === action.payload.user_id) {
-      each.user_name = action.payload.user_name;
-      each.user_username = action.payload.user_username;
-      each.user_email = action.payload.user_email;
-      each.user_address=action.payload.user_address;
-    }
-    return each;
-  });
-  return userdata;*/
+    case actionTypes.EDIT_DATA:
+        debugger
+        console.log(state)
+        const userdata =state.data.map(each => {
+          if (each.id === action.payload.user_id) {
+            each.user_name = action.payload.user_name;
+            each.user_username = action.payload.user_username;
+            each.user_email = action.payload.user_email;
+            console.log(each.user_name)
+          
+          }
+          return each;
+        });
+        return userdata;
+
+
+     
       default:
         return state
     }
