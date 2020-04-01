@@ -3,36 +3,10 @@ import { Field, reduxForm } from "redux-form";
 import { Form, Button, Container, Row, Col, FormGroup } from "react-bootstrap";
 
 
-const validate = values => {
-  const errors = {};
-  if (!values.name) {
-    errors.name = "Required";
-  }
-
-  if (!values.address) {
-    errors.address = "Required";
-  }
-  
-  if (!values.phoneNo) {
-    errors.phoneNo = "Required";
-  }
-  if (!values.country) {
-    errors.country = "Required";
-  }
-  return errors;
-};
-const renderField = ({ input, label, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <input {...input} placeholder={label} />
-      {touched && <span className="text-danger">{error}</span>}
-    </div>
-  </div>
-);
 const EditForm = props => {
-  const { handleSubmit, reset } = props;
-
+ const  { handleSubmit, reset } =props;
+ console.log(props)
+  
   return (
     <Container>
       <Row>
@@ -44,12 +18,16 @@ const EditForm = props => {
               <table>
                 <FormGroup>
                                    <tr>
+                                   <label>Name</label>
                     
                     <Field
-                      component={renderField}
+                      component="input"
                       label="Name"
                       type="text"
                       name="name"
+                      value={props.name}
+                      onChange={props.changeName}
+                    
                     />
                   </tr>
                 
@@ -57,38 +35,46 @@ const EditForm = props => {
                 <FormGroup>
                  
                   <tr>
+                    <label>Address</label>
                     <br />
                     <Field
-                      component={renderField}
+                      component="input"
                       label="Address"
                       name="address"
                       type="text"
+                      value={props.address}
+                      onchange={props.changeAddress}
                     />
                   </tr>
                  
                 </FormGroup>
                 <FormGroup>
                   
-                  <tr>
+                  <tr> <label>PhoneNo</label>
                     <br />
 
                     <Field
-                      component={renderField}
+                      component="input"
                       label="phoneNo"
                       name="phoneNo"
                       type="text"
+                      value={props.phoneNo}
+                      onChange={props.changePhoneNo}
                     />
                   </tr>
                 </FormGroup>
                 <FormGroup>
                 
                   <tr>
+                  <label>Country</label>
                     <br />
                     <Field
-                      component={renderField}
+                      component="input"
                       label="Country"
                       name="country"
                       type="text"
+                      value={props.country}
+                      onChange={props.changeCountry}
                     />
                   </tr>
                                  </FormGroup>
@@ -118,9 +104,10 @@ const EditForm = props => {
       </Row>
     </Container>
   );
-};
+
+ };
 
 export default reduxForm({
   form: "storing",
-  validate
+
 })(EditForm);
